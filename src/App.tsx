@@ -26,7 +26,7 @@ export default class App extends React.Component{
       <AdditionalData />
       <div className="container-fluid h-100">
           <div className="row h-100">         
-          <div className="col text-white bg-dark p-4" style={{ maxWidth: "200px"}}>
+          <div className="col text-white bg-dark p-4" style={{ maxWidth: "270px"}}>
             <Link to="/" className="align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
               <svg className="bi me-2" width="40" height="32">
                 <use xlinkHref="#bloodmu"></use>

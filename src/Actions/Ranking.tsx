@@ -23,9 +23,7 @@ export default class Ranking extends Component<{}, RankingState> {
         this.comm.getCharacterList(data => {
             if(data.status == 200) {
                 this.setState({characterList: data.data});
-            } else {
-
-            }
+            } 
         })
     }
 
@@ -59,7 +57,6 @@ export default class Ranking extends Component<{}, RankingState> {
                 </div>
              </div>
             : <div className="loading-gif" style={{marginTop:'100px'}} ></div>}
-
         </div>);
     }
 }
