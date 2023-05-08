@@ -40,15 +40,17 @@ export default class Ranking extends Component<{}, RankingState> {
                     <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Reset</th>
-                    <th scope="col">Level</th>
                     </tr>
                 </thead>
                     <tbody>
                         {Object.keys(this.state.characterList).map((key) => (
                             <tr>
-                                <td>{this.state.characterList[key].Name}</td>
-                                <td>{this.state.characterList[key].Reset}</td>
-                                <td>{this.state.characterList[key].Level}</td>
+                                <td>
+                                    <span><b>{this.state.characterList[key].name}</b><br />
+                                    <small>{this.state.characterList[key].class}</small>
+                                    </span>
+                                </td>
+                                <td>{this.state.characterList[key].resets}</td>
                             </tr>
                             ))
                         }

@@ -140,51 +140,50 @@ export default class Register extends Component<any, RegisterState> {
         return  (
         <div className="container">
         {this.state.RegisterStatus == '' ?
-        <div className="row">
-            <div className="col-10">
-                <h1>Register</h1>
-                <p className="small">Use this form to creat new account.</p>
-                <form  autoComplete="off" >
-                <div className="mb-3 mt-3">
-                    <label htmlFor="username" className="form-label">Login:</label>
-                    <input value={this.state.LoginName} onChange={this.changeLogin} type="text" className={`form-control ${this.state.BadLoginName ? 'is-invalid' : this.state.FormSuccessState }`} id="login" placeholder="Enter login" />
-                    <div className="invalid-feedback small">Please provide a valid login.</div>
+            <div className="row">
+                <div className="col-10">
+                    <h1>Register</h1>
+                    <p className="small">Use this form to creat new account.</p>
+                    <form  autoComplete="off" >
+                    <div className="mb-3 mt-3">
+                        <label htmlFor="username" className="form-label">Login:</label>
+                        <input value={this.state.LoginName} onChange={this.changeLogin} type="text" className={`form-control ${this.state.BadLoginName ? 'is-invalid' : this.state.FormSuccessState }`} id="login" placeholder="Enter login" />
+                        <div className="invalid-feedback small">Please provide a valid login.</div>
+                    </div>
+                    <div className="mb-3 mt-3">
+                        <label htmlFor="email" className="form-label">Email:</label>
+                        <input required value={this.state.EMail} onChange={this.changeEmail} type="email" className={`form-control ${this.state.BadEMail ? 'is-invalid' : this.state.FormSuccessState }`} id="email" placeholder="Enter email" />
+                        <div className="invalid-feedback">Please provide a valid email.</div>
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="pwd" className="form-label">Password:</label>
+                        <input value={this.state.Password} onChange={this.changePassword} type="password" className={`form-control ${this.state.BadPassword ? 'is-invalid' : this.state.FormSuccessState }`} id="pwd" placeholder="Enter password" autoComplete="off" />
+                        <div className="invalid-feedback">Please provide a valid password.</div>
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="pwdre" className="form-label">Password re.:</label>
+                        <input value={this.state.PasswordRe} onChange={this.changePasswordRe} type="password" className={`form-control ${this.state.BadPassword ? 'is-invalid' : this.state.FormSuccessState }`} id="pwdre" placeholder="Enter password" autoComplete="off"  />
+                        <div className="invalid-feedback">Password & Password re. needs to mach</div>
+                    </div>
+                    <div className="mb-3">
+                        <button type="button" disabled= {this.state.Disabled} className="btn btn-primary" onClick={this.saveAccount} >Submit</button>
+                    </div>
+                    </form>
                 </div>
-                <div className="mb-3 mt-3">
-                    <label htmlFor="email" className="form-label">Email:</label>
-                    <input required value={this.state.EMail} onChange={this.changeEmail} type="email" className={`form-control ${this.state.BadEMail ? 'is-invalid' : this.state.FormSuccessState }`} id="email" placeholder="Enter email" />
-                    <div className="invalid-feedback">Please provide a valid email.</div>
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="pwd" className="form-label">Password:</label>
-                    <input value={this.state.Password} onChange={this.changePassword} type="password" className={`form-control ${this.state.BadPassword ? 'is-invalid' : this.state.FormSuccessState }`} id="pwd" placeholder="Enter password" autoComplete="off" />
-                    <div className="invalid-feedback">Please provide a valid password.</div>
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="pwdre" className="form-label">Password re.:</label>
-                    <input value={this.state.PasswordRe} onChange={this.changePasswordRe} type="password" className={`form-control ${this.state.BadPassword ? 'is-invalid' : this.state.FormSuccessState }`} id="pwdre" placeholder="Enter password" autoComplete="off"  />
-                    <div className="invalid-feedback">Password & Password re. needs to mach</div>
-                </div>
-                <div className="mb-3">
-                    <button type="button" disabled= {this.state.Disabled} className="btn btn-primary" onClick={this.saveAccount} >Submit</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        :
-        <div className="row">
-            {this.state.RegisterStatus == "200" &&
-            <div className="col-8">
-                <h1>Register</h1>
-                <p className="small text-success">New account was created for you.</p> 
+            </div> :
+            <div className="row">
+                {this.state.RegisterStatus == "200" &&
+                <div className="col-8">
+                    <h1>Register</h1>
+                    <p className="small text-success">New account was created for you.</p> 
+                </div>}
+                {this.state.RegisterStatus == "400" &&
+                <div className="col-8">
+                    <h1>Register</h1>
+                    <p className="small text-danger">Failed to create account.</p>
+                    <button type="button" className="btn btn-primary" onClick={this.resetRegistration} >Back</button>
+                </div>}
             </div>}
-            {this.state.RegisterStatus == "400" &&
-            <div className="col-8">
-                <h1>Register</h1>
-                <p className="small text-danger">Failed to create account.</p>
-                <button type="button" className="btn btn-primary" onClick={this.resetRegistration} >Back</button>
-            </div>}
-        </div>}
         </div>);
     }
 }

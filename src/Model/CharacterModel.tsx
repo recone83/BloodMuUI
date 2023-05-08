@@ -1,7 +1,7 @@
 export interface CharacterModel {
-    Name:string;
-    Reset:string;
-    Level:string;
+    name:string;
+    class:string;
+    resets:string;
 }
 
 export type CharacterList = {

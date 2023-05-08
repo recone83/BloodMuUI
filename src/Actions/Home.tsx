@@ -21,6 +21,13 @@ export default class Home extends Component {
                     <source src="/world_2.mp4" type="video/mp4" />
                 </video>
             </div>
+            <div className="row" style={{marginTop:"20px"}}>         
+                <div className="col">
+                    <h3>BloodmMu server start</h3>
+                    <span>Server season start!</span>
+                    <hr />
+                </div>
+            </div>
         </div> 
         );
     }

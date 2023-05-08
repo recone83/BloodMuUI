@@ -1,12 +1,14 @@
 import axios from 'axios';
 
 import { Config, ConfigData } from "../lib/Config";
-import { RegisterState } from "../Actions/Register";
 import { CharacterList, CharacterModel } from "../Model/CharacterModel";
+import { ServerStatus } from "../Model/Type/Default";
 
 export type FormErrors = {
     [key:string]: CharacterModel;
 }
+
+export type ServerStatusEvent = (status:number, message: ServerStatus|null) => void
 
 export type Data = {
     [key:string]: any;
@@ -57,7 +59,8 @@ export class CommunicationService {
     async createAccount(data: NewAccountPostData, run:ResponseDataEvent) {
         let postData = JSON.stringify(data);
         
-        return await axios.post(this.config.uri+'/account/add', postData).then(res => {
+        return await axios.post(this.config.uri+'/v1/account/add', postData, { headers: {'Content-Type': 'application/json'}})
+        .then(res => {
             run({status: res.status, data: res.data});
         }, (error) => {
             run({
@@ -66,9 +69,16 @@ export class CommunicationService {
             });
         });
     }
-
+    async getServerStatus(run: ServerStatusEvent) {
+        return await axios.get(this.config.uri+'/v1/auth/status')
+        .then(res => {
+            run(res.status, res.data);
+        }, (error) => {
+            run(error.response.status, null);
+        });
+    }
     async getCharacterList(run:CharacterListDataEvent) {
-        return await axios.get(this.config.uri+'/character/get').then(res => {
+        return await axios.get(this.config.uri+'/v1/character/ranking/resets').then(res => {
             let lista = res.data as CharacterList;
             run({status:res.status, data:lista});
         }, (error) => {
