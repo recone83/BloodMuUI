@@ -1,6 +1,9 @@
 #root {
   height: 100%!important;
 }
+.offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
+  --bs-offcanvas-width: 330px!important;
+}
 
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -118,4 +121,13 @@ main {
 #video {
   height:200px;
   overflow:hidden;
+}
+.nav-sub-item {
+  padding-bottom:10px
+}
+.nav-sub-item li {
+  font-size:13px;
+}
+.nav-sub-item li a:hover {
+  text-decoration: none;
 }
