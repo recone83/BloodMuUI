@@ -3,13 +3,14 @@ import  React from "react";
 import { Component } from "react";
 import { CommunicationService } from "../lib/CommunicationService";
 import { CharacterList, CharacterList11, CharacterModel } from "../Model/CharacterModel";
+import PlayerModal from "../lib/Modal/PlayerModal";
 
 
 type RankingState = {
     characterList: CharacterList
 }
 
-export default class Ranking extends Component<{}, RankingState> {
+export default class Ranking extends Component<any, RankingState> {
     private comm: CommunicationService = CommunicationService.getInstance();
 
     constructor(props:any) {
@@ -26,7 +27,8 @@ export default class Ranking extends Component<{}, RankingState> {
             } 
         })
     }
-
+    componentWillUpdate() {
+     }
     render() {
         return (
         <div className="container">
@@ -46,7 +48,7 @@ export default class Ranking extends Component<{}, RankingState> {
                         {Object.keys(this.state.characterList).map((key) => (
                             <tr>
                                 <td>
-                                    <span><b>{this.state.characterList[key].name}</b><br />
+                                    <span><b><PlayerModal show={false}>{this.state.characterList[key].name}</PlayerModal></b><br />
                                     <small>{this.state.characterList[key].class}</small>
                                     </span>
                                 </td>

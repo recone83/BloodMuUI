@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 import { Config, ConfigData } from "../lib/Config";
-import { CharacterList, CharacterModel } from "../Model/CharacterModel";
+import { CharacterList, CharacterMiniModel, CharacterModel } from "../Model/CharacterModel";
 import { ServerStatus } from "../Model/Type/Default";
 
 export type FormErrors = {
-    [key:string]: CharacterModel;
+    [key:string]: CharacterMiniModel;
 }
 
 export type ServerStatusEvent = (status:number, message: ServerStatus|null) => void
@@ -16,14 +16,14 @@ export type Data = {
 export type ResponseData = {status:number, data:Data}
 export type ResponseDataEvent = (message: ResponseData) => void
 export type TempDataEvent = (message: any) => void
-export type CharacterListDataEvent = (message: {status:number, data:CharacterList}) => void
+export type CharacterListDataEvent = (message: {status:number, data: CharacterList}) => void
 
 export interface NewAccountPostData {
     LoginName: string; 
     EMail: string;
     Password: string; 
 }
-
+export type CharacterModelEvent = (message: {status:number, data: CharacterModel}) => void
 /**
  * Communication Service
  */
@@ -77,10 +77,19 @@ export class CommunicationService {
             run(error.response.status, null);
         });
     }
-    async getCharacterList(run:CharacterListDataEvent) {
+    async getCharacterList(run: CharacterListDataEvent) {
         return await axios.get(this.config.uri+'/v1/character/ranking/resets').then(res => {
             let lista = res.data as CharacterList;
             run({status:res.status, data:lista});
+        }, (error) => {
+            run({status:error.status, data: error});
+        });
+    }
+
+    async getCharacter(name:string, run: CharacterModelEvent) {
+        return await axios.get(this.config.uri+'/v1/character/get?nameCharacter='+name).then(res => {
+            let character = res.data as CharacterModel;
+            run({status:res.status, data: character});
         }, (error) => {
             run({status:error.status, data: error});
         });

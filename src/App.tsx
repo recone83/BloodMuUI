@@ -3,7 +3,6 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { NavLink } from 'react-router-dom'
 
-import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 
 import About from './Actions/About';
@@ -42,7 +41,7 @@ export default class App extends Component<any, AppSet> {
   componentDidMount() {
     document.title = "BloodMu private MuOnline server"
     this.comm.getServerStatus((st, data) => {
-        if(st == 200) {
+        if(st === 200) {
             this.setState({serverState: data});
         } 
     });

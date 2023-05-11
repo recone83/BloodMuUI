@@ -1,13 +1,24 @@
-export interface CharacterModel {
+export interface CharacterMiniModel {
     name:string;
     class:string;
     resets:string;
 }
 
-export type CharacterList = {
-    [key:string]: CharacterModel;
+export interface CharacterModel {
+    name:string;
+    class:string;
+    currentMap:string;
+    x:number;
+    y:number;
+    exp:number;
+    lvl:number;
+    reset:number;
 }
 
-export interface CharacterList11<CharacterModel> {
-    [Symbol.iterator](): Iterator<CharacterModel>;
+export type CharacterList = {
+    [key:string]: CharacterMiniModel;
+}
+
+export interface CharacterList11<CharacterMiniModel> {
+    [Symbol.iterator](): Iterator<CharacterMiniModel>;
 }
