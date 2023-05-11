@@ -24,7 +24,7 @@ export default class Chat extends Component<ChatState, ChatState> {
 
     render() {
         return (
-        <Offcanvas show={this.props.showChat} onHide={()=>this.props.toggleChat()}>
+        <Offcanvas show={this.props.showChat} onHide={()=>this.props.toggleChat()} placement={'end'} scroll={true} backdrop={false}>
             <Offcanvas.Header closeButton >
                 <Offcanvas.Title>Server Chat</Offcanvas.Title>
             </Offcanvas.Header>

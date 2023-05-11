@@ -141,7 +141,7 @@ export default class Register extends Component<any, RegisterState> {
         <div className="container">
         {this.state.RegisterStatus == '' ?
             <div className="row">
-                <div className="col-10">
+                <div className="col-8">
                     <h1>Register</h1>
                     <p className="small">Use this form to creat new account.</p>
                     <form  autoComplete="off" >

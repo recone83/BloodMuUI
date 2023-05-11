@@ -3,6 +3,7 @@
 }
 .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
   --bs-offcanvas-width: 330px!important;
+  background-color: darkgrey;
 }
 
 .bd-placeholder-img {
