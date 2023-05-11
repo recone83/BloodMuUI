@@ -17,9 +17,11 @@ import Footer from './Footer';
 
 import { CommunicationService } from "./lib/CommunicationService";
 import { ServerStatus } from "./Model/Type/Default";
+import ServerStatusModal from "./lib/Modal/ServerStatusModal";
 
 export  interface AppSet {
   serverState: ServerStatus|null;
+  showServerModal: boolean;
 }
 
 export default class App extends Component<any, AppSet> {
@@ -31,8 +33,13 @@ export default class App extends Component<any, AppSet> {
         players: 0,
         state:"",
         playersList:[""]
-      }
+      },
+      showServerModal: false
     }
+  }
+
+  toggleServerModal() {
+    this.setState({showServerModal: !this.state.showServerModal})
   }
 
   componentDidMount() {
@@ -56,13 +63,13 @@ export default class App extends Component<any, AppSet> {
               </Link>
             <div style={{listStyle: "none", color: "greenyellow", margin:"auto", display:"block"}}>
               { this.state.serverState?.state === "Online" ?
-                 <Button variant="success" >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-broadcast" viewBox="0 0 16 16">
-                    <path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
-                  </svg>
+                 <Button variant="success" onClick={()=>this.toggleServerModal()} >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-broadcast" viewBox="0 0 16 16"><path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
                   <span style={{paddingLeft:"10px"}}>Server is {this.state.serverState?.state} 
                  <Badge bg="danger" style={{marginLeft:"10px"}} pill>{this.state.serverState?.players}</Badge></span>
                  </Button> : <Button variant="danger">Server is Offline</Button>}
+
+                 <ServerStatusModal show={this.state.showServerModal} serverState={this.state.serverState} toggleModal={()=>this.toggleServerModal()} />
             </div>
             <hr />
             <ul className="nav nav-pills flex-column mb-auto">
@@ -98,12 +105,12 @@ export default class App extends Component<any, AppSet> {
               </li>
             </ul>
             <hr />
-            <NavLink className="nav-link text-white" aria-current="page" to="/login" >
+         {/*  <NavLink className="nav-link text-white" aria-current="page" to="/login" >
               <svg className="bi me-2" width="16" height="16">
                 <use xlinkHref="#people-circle"></use>
               </svg>
               Login
-            </NavLink>
+    </NavLink> -*/} 
           </div>
           
           <div className="col py-3" >
