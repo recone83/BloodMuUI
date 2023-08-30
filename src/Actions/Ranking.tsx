@@ -28,7 +28,7 @@ export default class Ranking extends Component<any, RankingState> {
         })
     }
     componentWillUpdate() {
-     }
+    }
     render() {
         return (
         <div className="container">
@@ -48,7 +48,10 @@ export default class Ranking extends Component<any, RankingState> {
                         {Object.keys(this.state.characterList).map((key) => (
                             <tr>
                                 <td>
-                                    <span><b><PlayerModal show={false}>{this.state.characterList[key].name}</PlayerModal></b><br />
+                                    <span>
+                                        <b>
+                                            <PlayerModal show={false}>{this.state.characterList[key].name}</PlayerModal>
+                                        </b><br />
                                     <small>{this.state.characterList[key].class}</small>
                                     </span>
                                 </td>

@@ -25,16 +25,16 @@ export default class PlayerModal extends Component<ModalProps, ModalState> {
         }
     }
 
-    componentWillUpdate(props: ModalProps, props2: ModalState) {
-        if(props2.character === null) {
-            this.comm.getCharacter(this.props.children, (st) => {
-                this.setState({character: st.data})
-            });
-        }
+    componentDidMount() {
     }
 
     showModal() {
-        this.setState({show: true});
+        this.comm.getCharacter(this.props.children, (st) => {
+            this.setState({
+                character: st.data,
+                show: true
+            })
+        });
     }
 
     hideModal() {
