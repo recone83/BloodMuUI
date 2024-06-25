@@ -13,7 +13,7 @@ export default class Home extends Component<any, AppSet> {
     constructor(props:any) {
         super(props);
         this.state = {
-            chatShow: true
+            chatShow: false
             }
     }
     

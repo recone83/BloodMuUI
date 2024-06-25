@@ -19,7 +19,7 @@ import { CommunicationService } from "./lib/CommunicationService";
 import { ServerStatus } from "./Model/Type/Default";
 import ServerStatusModal from "./lib/Modal/ServerStatusModal";
 
-export  interface AppSet {
+export interface AppSet {
   serverState: ServerStatus|null;
   showServerModal: boolean;
 }
@@ -31,8 +31,8 @@ export default class App extends Component<any, AppSet> {
     this.state = {
       serverState: {
         players: 0,
-        state:"",
-        playersList:[""]
+        state: "",
+        playersList: [""]
       },
       showServerModal: false
     }
@@ -53,91 +53,156 @@ export default class App extends Component<any, AppSet> {
 
   render() {
     return (
-      <Router>
+    <Router>
       <AdditionalData />
-      <div className="container-fluid h-100">
-          <div className="row h-100">         
-          <div className="col text-white bg-dark p-4" style={{ maxWidth: "330px"}}>
-              <Link to="/" className="align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-              <img src="/logo.png" alt="BloodMu" style={{margin:"auto", display:"block"}} width="150px"  />
-              </Link>
-            <div style={{listStyle: "none", color: "greenyellow", margin:"auto", display:"block"}}>
-              { this.state.serverState?.state === "Online" ?
-                 <Button variant="success" onClick={()=>this.toggleServerModal()} >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-broadcast" viewBox="0 0 16 16"><path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
-                  <span style={{paddingLeft:"10px"}}>Server is {this.state.serverState?.state} 
-                 <Badge bg="danger" style={{marginLeft:"10px"}} pill>{this.state.serverState?.players}</Badge></span>
-                 </Button> : <Button variant="danger">Server is Offline</Button>}
-
-                 <ServerStatusModal show={this.state.showServerModal} serverState={this.state.serverState} toggleModal={()=>this.toggleServerModal()} />
-            </div>
-            <hr />
-            <ul className="nav nav-pills flex-column mb-auto">
-              <li className="nav-item">
+      <div className="container-fluid h-100" style={{padding:"0px", margin:"0px",float:"left",width:"100%"}}>
+            <div id="navbar">
+                <ul>
+                  <li>
                   <NavLink className="nav-link text-white" aria-current="page" to="/news" >
-                  <svg className="bi me-2" width="16" height="16"><use xlinkHref="#home"></use></svg>
                   Home
                   </NavLink>
-              </li>
-              <li>
+                  </li>
+                  <li>
                   <NavLink className="nav-link text-white" aria-current="page" to="/register" >
-                  <svg className="bi me-2" width="16" height="16"><use xlinkHref="#grid"></use></svg>
                   Register
                   </NavLink>
-              </li>
-              <li>
+                  </li>
+                  <li>
                   <NavLink className="nav-link text-white" aria-current="page" to="/download" >
-                  <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table"></use></svg>
                   Download
                   </NavLink>
-              </li>
-              <li>
+                  </li>
+                  <li>
                   <NavLink className="nav-link text-white" aria-current="page" to="/ranking" >
-                  <svg className="bi me-2" width="16" height="16"><use xlinkHref="#speedometer2"></use></svg>
                   Ranking
                   </NavLink>
-              </li>
-              <li>
+                  </li>
+                  <li>
                   <NavLink className="nav-link text-white" aria-current="page" to="/about" >
-                  <svg className="bi me-2" width="16" height="16"><use xlinkHref="#people-circle"></use></svg>
                   About
                   </NavLink>
-              </li>
-            </ul>
-            <hr />
-         {/*  <NavLink className="nav-link text-white" aria-current="page" to="/login" >
-              <svg className="bi me-2" width="16" height="16">
-                <use xlinkHref="#people-circle"></use>
-              </svg>
-              Login
-    </NavLink> -*/} 
-          </div>
-          
-          <div className="col py-3" >
-            <Switch>
-            <Route path="/login" >
-                <Login />
-              </Route>
-              <Route path="/about" >
-                <About />
-              </Route>
-              <Route path="/download" >
-                <Download />
-              </Route>
-              <Route path="/ranking" >
-                <Ranking />
-              </Route>
-              <Route path="/register" >
-                <Register />
-              </Route>
-              <Route path="/" >
-                <Home />
-              </Route>
-            </Switch>
-            <Footer />  
-          </div>    
+                  </li>
+                </ul>
+            </div>
+            <div id="header">
+              <div className="video-shadow"></div>
+              <video id="headervideo" width="100%" height="auto"preload="auto"  muted autoPlay loop >
+                <source src="../img/world_2.mp4" type="video/mp4" />
+              </video>
+              <div className="header-content-container">
+              <div className="header-content">
+                <div id="stats-block" className="mblock" >
+                    <div>
+                      <a href="/server">
+                        <img src="../img/img-server-top.png" />
+                        <div className="server-time">
+                              <ul>
+                                  <li><b>Server is Online</b></li>
+                                  <li>Users online: <b className="players" style={{color:"green", fontSize:"18px"}}></b></li>
+                                  <li>Total Accounts: <b></b></li>
+                                  <li>Total Characters: <b></b></li>
+                              </ul> 
+                        </div>
+                      </a> 
+                    </div>	
+                </div>
+                
+                <div id="stats-block-right" className="mblock" >
+                  <div>
+                    <img src="../img/img-server-bottom.png" />
+                    <div className="server-time">
+                    <ul style={{float:"left"}}>
+                      <li><b>MuOnline Season 6.3</b></li>
+                      <li>Reset 400lvl</li>
+                    </ul>
+                    </div>
+                  </div>
+                </div>
+
+					      <div className="col-xs-8 header-front"></div>
+                <div className="col-xs-4 header-front">
+                      <span style={{fontFamily:"fantasy",textShadow:"1px 1px 5px black",fontSize:"40px",left:"+350px",fontWeight:"bold",color:"red",letterSpacing:"-2px",textAlign:"center", margin:"auto",position:"relative",top:"220px",filter:"blur(0.5px)"}} >
+                          Blood
+                      </span>
+                      <img className="site-logo" src="../img/logo.png" title="" />
+                </div>
+				      </div>
+              </div>
+            </div>
+
+            <div id="container">
+              <div className="container">
+              <div className="row">
+                <div className="col-8">
+                  <Switch>
+                    <Route path="/login" >
+                      <Login />
+                    </Route>
+                    <Route path="/about" >
+                      <About />
+                    </Route>
+                    <Route path="/download" >
+                      <Download />
+                    </Route>
+                    <Route path="/ranking" >
+                      <Ranking />
+                    </Route>
+                    <Route path="/register" >
+                      <Register />
+                    </Route>
+                    <Route path="/" >
+                      <Home />
+                    </Route>
+                  </Switch>
+                </div>
+                <div className="col-4">
+                  <div className="sidebar-banner">
+                    <NavLink className="nav-link text-white" aria-current="page" to="/register" >
+                      <img src="../img/register_sidebar_banner.jpg"/>
+                    </NavLink>
+                  </div>
+                  <div className="sidebar-banner">
+                    <NavLink className="nav-link text-white" aria-current="page" to="/download" >
+                      <img src="../img/download_sidebar_banner.jpg"/>
+                    </NavLink>
+                  </div>
+
+                  <div className="panel panel-sidebar">
+                    <div className="panel-heading">
+                      <h3 className="panel-title">Contact</h3>
+                    </div>
+                    <div className="panel-body">
+                      <a href="mailme:admin[at]bloodmu.pl" >admin[at]bloodmu.org</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+
+            <footer className="footer">
+              <div className="footer-container">
+                <div className="col-xs-8">
+                  <p>&copy; 2024</p>
+                  <p>This site is in no way associated with or endorsed by Webzen Inc.</p>
+                  <br />
+                  <p>MU Online is a free-to-play medieval fantasy MMORPG from Webzen. The game features fast-paced combat, quests, dungeons, PvP, castle sieges, and more. Players can choose from the seven classes of Dark Knight, Dark Wizard, Fairy Elf, Magic Gladiator, Dark Lord, Summoner, and Rage Fighter, and participate in a variety of official combat-centric events and prize challenges.</p>
+                </div>
+                <div className="col-xs-4">
+                  <div className="col-xs-6 text-center">
+                    <span style={{fontWeight:"bold"}}></span><br />
+                    <span className="footer-time"><time id="tServerTime"></time></span>
+                  </div>
+                  <div className="col-xs-6 text-center">
+                    <span style={{fontWeight:"bold"}}></span><br />
+                    <span className="footer-time"><time id="tLocalTime"></time></span>
+                  </div>
+                  <div className="col-xs-12 text-center"></div>
+                </div>
+              </div>
+            </footer>
       </div>
-    </div>
     </Router>
     );
   }
