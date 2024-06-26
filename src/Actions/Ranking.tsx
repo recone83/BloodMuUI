@@ -34,7 +34,7 @@ export default class Ranking extends Component<any, RankingState> {
         <div className="container">
         <h1>Ranking</h1>
 
-        {Object.keys(this.state.characterList).length > 1 ?
+        {Object.keys(this.state.characterList).length > 0 ?
         <div className="card">
             <div className="card-body">
                 <table className="table table-striped">
@@ -63,7 +63,7 @@ export default class Ranking extends Component<any, RankingState> {
                 </table>
                 </div>
              </div>
-            : <div className="loading-gif" style={{marginTop:'100px'}} ></div>}
+            : <div className="loadinggif" ></div>}
         </div>);
     }
 }
