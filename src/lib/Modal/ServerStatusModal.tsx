@@ -45,9 +45,8 @@ export default class ServerStatusModal extends Component<ServerProps, ServerStat
             </Modal.Header>
             <Modal.Body>
                 <p>Server state: {this.props.serverState?.state} ({this.props.serverState?.players})</p>
-                <p>Players online:
-                   
-                {this.props.serverState?.playersList.map(item => item+", ")}
+                <p>
+                    {this.props.serverState && this.props.serverState?.players > 0 ? "Players online: "+this.props.serverState?.playersList.map(item => item+", ") : ""}
                 </p>
             </Modal.Body>
             <Modal.Footer>
