@@ -32,7 +32,9 @@ export default class App extends Component<any, AppSet> {
       serverState: {
         players: 0,
         state: "",
-        playersList: [""]
+        playersList: [""],
+        accounts:0,
+        characters:0
       },
       showServerModal: false
     }
@@ -107,8 +109,8 @@ export default class App extends Component<any, AppSet> {
 
                                   <ServerStatusModal show={this.state.showServerModal} serverState={this.state.serverState} toggleModal={()=>this.toggleServerModal()} />
                                 </li>
-                                  <li>Total Accounts: <b>-</b></li>
-                                  <li>Total Characters: <b>-</b></li>
+                                  <li>Total Accounts: <b>{this.state.serverState?.accounts}</b></li>
+                                  <li>Total Characters: <b>{this.state.serverState?.characters}</b></li>
                               </ul> 
                         </div>
                     </div>	
