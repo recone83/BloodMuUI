@@ -2,9 +2,8 @@
 import  React from "react";
 import { Component } from "react";
 import { CommunicationService } from "../lib/CommunicationService";
-import { CharacterList, CharacterList11, CharacterModel } from "../Model/CharacterModel";
-import PlayerModal from "../lib/Modal/PlayerModal";
-
+import { CharacterList } from "../Model/CharacterModel";
+import { NavLink } from 'react-router-dom'
 
 type RankingState = {
     characterList: CharacterList
@@ -40,8 +39,8 @@ export default class Ranking extends Component<any, RankingState> {
                 <table className="table table-striped">
                 <thead>
                     <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Reset</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Reset</th>
                     </tr>
                 </thead>
                     <tbody>
@@ -49,10 +48,10 @@ export default class Ranking extends Component<any, RankingState> {
                             <tr>
                                 <td>
                                     <span>
-                                        <b>
-                                            <PlayerModal show={false}>{this.state.characterList[key].name}</PlayerModal>
-                                        </b><br />
-                                    <small>{this.state.characterList[key].class}</small>
+                                        <NavLink to={"/character/"+this.state.characterList[key].name} >
+                                            <strong>{this.state.characterList[key].name}</strong><br />
+                                            <small>{this.state.characterList[key].class}</small>
+                                        </NavLink>
                                     </span>
                                 </td>
                                 <td>{this.state.characterList[key].resets}</td>

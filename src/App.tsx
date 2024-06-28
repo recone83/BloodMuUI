@@ -13,7 +13,7 @@ import Ranking from './Actions/Ranking';
 import Login from './Actions/Login';
 import AdditionalData from './Actions/AdditionalData';
 import Download from './Actions/Download';
-import Footer from './Footer';
+import Character from './Actions/Character';
 
 import { CommunicationService } from "./lib/CommunicationService";
 import { ServerStatus } from "./Model/Type/Default";
@@ -144,6 +144,9 @@ export default class App extends Component<any, AppSet> {
               <div className="row">
                 <div className="col-8">
                   <Switch>
+                    <Route path="/character/:id"  render={(props) => (
+                        <Character id={props.match.params.id}/>
+                    )} />
                     <Route path="/login" >
                       <Login />
                     </Route>

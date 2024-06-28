@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import { ServerStatus } from "../../Model/Type/Default";
+import { NavLink } from 'react-router-dom'
 
 type ServerProps = {
     show: boolean;
@@ -24,11 +25,6 @@ export default class ServerStatusModal extends Component<ServerProps, ServerStat
         }
     }
 
-    componentWillUpdate(props: ServerProps, props2: ServerProps) {
-        console.log(props, props2);
-        console.log(this.state);
-    }
-
     showModal() {
         this.setState({show: true});
     }
@@ -46,7 +42,12 @@ export default class ServerStatusModal extends Component<ServerProps, ServerStat
             <Modal.Body>
                 <p>Server state: {this.props.serverState?.state} ({this.props.serverState?.players})</p>
                 <p>
-                    {this.props.serverState && this.props.serverState?.players > 0 ? "Players online: "+this.props.serverState?.playersList.map(item => item+", ") : ""}
+                    {this.props.serverState && this.props.serverState?.players > 0 ? "Players online: ":""}
+                    {this.props.serverState?.playersList.map((item) => {     
+                    return (
+                        <NavLink to={"/character/"+item} >{item+","}</NavLink>) 
+                    })}
+
                 </p>
             </Modal.Body>
             <Modal.Footer>
