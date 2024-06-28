@@ -71,6 +71,7 @@ export default class Character extends Component<ModalProps, ModalState> {
     render() {
         return (
         <div className="container">
+        { this.state.character ? <div>
             <h1>{this.state.character?.name}</h1>
             <div style={{float:"left", width:"100px", height:"100px",margin:"5px 5px 5px 5px"}} >
                 <img src={this.renderSwitch(this.state.character?.class)} />
@@ -81,6 +82,7 @@ export default class Character extends Component<ModalProps, ModalState> {
             Experience: <b>{this.state.character?.exp}</b> <br />
             Level: <b>{this.state.character?.lvl}</b> <br />
             Resets: <b>{this.state.character?.reset}</b> <br />
+            </div> : <div className="loadinggif" ></div>}
         </div>);
     }
 }
