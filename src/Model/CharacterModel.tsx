@@ -19,6 +19,12 @@ export type CharacterList = {
     [key:string]: CharacterMiniModel;
 }
 
+
+export type FullList = {
+    [key:string]: CharacterModel;
+}
+
+
 export interface CharacterList11<CharacterMiniModel> {
     [Symbol.iterator](): Iterator<CharacterMiniModel>;
 }
