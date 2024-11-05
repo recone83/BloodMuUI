@@ -31,10 +31,16 @@ export default class Download extends Component {
     </thead>
     <tbody>
         <tr>
-        <th scope="row">1</th>
-        <td>700MB</td>
-        <td>BloodMu V4</td>
-        <td><a href="/BloodMuV4.zip" target={'_blank'}>BloodMuV4.zip</a></td>
+            <th scope="row">1</th>
+            <td>~900MB</td>
+            <td>BloodMu V4 5.2 + improved</td>
+            <td><a href="/BloodMu v4 5.2.zip" target={'_blank'}><u>BloodMu v4 5.2.zip</u></a></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>~700MB</td>
+            <td>BloodMu V4 6.3 + MuHelper</td>
+            <td><a href="/BloodMuV4.zip" target={'_blank'}><u>BloodMu V4.zip</u></a></td>
         </tr>
         </tbody>   
     </table>
