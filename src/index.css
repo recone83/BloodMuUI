@@ -6,3 +6,6 @@ html {
 footer {
   bottom:0;
 }
+body.modal-open {
+  padding-right: 0px!important;
+}

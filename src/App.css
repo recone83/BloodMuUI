@@ -55,7 +55,23 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
 	overflow: hidden;
 	color: #fff;
 }
-	
+	@media (min-width: 576px) {
+		.container, .container-sm {
+			max-width: 576px;
+			margin-right: none; 
+			margin-left: none;
+		}
+	}
+	@media (min-width: 768px) {
+		.bd-placeholder-img-lg {
+			font-size: 3.5rem;
+		}
+		.container, .container-md, .container-sm {
+			max-width: 768px;
+			margin-right: none; 
+			margin-left: none;
+		}
+	}
 	@media only screen and (min-width: 1000px) {
 		#header > #headervideo {
 			position: relative;
@@ -946,11 +962,6 @@ APP
 	user-select: none;
   }
   
-  @media (min-width: 768px) {
-	.bd-placeholder-img-lg {
-	  font-size: 3.5rem;
-	}
-  }
   html, body, #app, #app>div {
 	height: 100%
   }

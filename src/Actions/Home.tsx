@@ -28,7 +28,7 @@ export default class Home extends Component<any, AppSet> {
         return (
         <div className="container" >
             <div className="row" style={{marginTop:"20px"}}>         
-                <div className="col-8">
+                <div className="col-12">
                     <h3>
                         Home page & News
                         <span>
@@ -36,7 +36,7 @@ export default class Home extends Component<any, AppSet> {
                         </span>
                     </h3>
                 <br />
-                <Card  style={{ width: '36rem' }}>
+                <Card  style={{ width: '100%' }}>
                     <Card.Body>
                     <Card.Title>Welcome </Card.Title>
                         <Card.Text>
@@ -46,7 +46,7 @@ export default class Home extends Component<any, AppSet> {
                         </Card.Text>
                     </Card.Body>
                 </Card>
-                <Card  style={{ width: '36rem', marginTop:'20px' }}>
+                <Card  style={{ width: '100%', marginTop:'20px' }}>
                     <Card.Body>
                         <Card.Text>
                         BloodMu start 01/03/2023
