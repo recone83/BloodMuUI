@@ -56,26 +56,42 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
 	color: #fff;
 }
 	@media (min-width: 576px) {
+		#container {
+			width: 576px !important;
+			margin: none;
+		}
 		.container, .container-sm {
 			max-width: 576px;
-			margin-right: none; 
-			margin-left: none;
+			margin: none;
 		}
 	}
 	@media (min-width: 768px) {
 		.bd-placeholder-img-lg {
 			font-size: 3.5rem;
 		}
+		#container {
+			width:768px !important;
+			margin: none;
+		}
 		.container, .container-md, .container-sm {
 			max-width: 768px;
-			margin-right: none; 
-			margin-left: none;
+			margin: none;
 		}
 	}
 	@media only screen and (min-width: 1000px) {
 		#header > #headervideo {
 			position: relative;
 			top: -50px;
+		}	
+		.container, .container-md, .container-sm {
+			max-width: 1000px;
+			margin: none;
+		}
+		#container {
+			width:1000px !important;
+			height: auto;
+			margin: 0px auto;
+			padding: 20px 0px;
 		}
 	}
 	@media only screen and (min-width: 1300px) {
@@ -135,13 +151,6 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
 #headerLogo {
 	width: 100%;
 	margin: 30px 0px;
-}
-
-#container {
-	width: 1000px;
-	height: auto;
-	margin: 0px auto;
-	padding: 20px 0px;
 }
 
 #content {
