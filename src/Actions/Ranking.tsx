@@ -24,7 +24,7 @@ export default class Ranking extends Component<any, RankingState> {
     }
 
     public getResets() {
-        if(Object.keys(this.state.resetList).length == 0)
+        if (Object.keys(this.state.resetList).length == 0)
         this.comm.getCharacterList(data => {
             if(data.status == 200) {
                 this.setState({resetList: data.data});

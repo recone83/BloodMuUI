@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { NavLink } from 'react-router-dom'
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Container from 'react-bootstrap/Container';
 
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
@@ -57,36 +61,36 @@ export default class App extends Component<any, AppSet> {
     return (
     <Router>
       <AdditionalData />
+
       <div className="container-fluid h-100" style={{padding:"0px", margin:"0px",float:"left",width:"100%"}}>
-            <div id="navbar">
-                <ul>
-                  <li>
-                  <NavLink className="nav-link text-white" aria-current="page" to="/news" >
-                  Home
-                  </NavLink>
-                  </li>
-                  <li>
-                  <NavLink className="nav-link text-white" aria-current="page" to="/register" >
-                  Register
-                  </NavLink>
-                  </li>
-                  <li>
-                  <NavLink className="nav-link text-white" aria-current="page" to="/download" >
-                  Download
-                  </NavLink>
-                  </li>
-                  <li>
-                  <NavLink className="nav-link text-white" aria-current="page" to="/ranking" >
-                  Ranking
-                  </NavLink>
-                  </li>
-                  <li>
-                  <NavLink className="nav-link text-white" aria-current="page" to="/about" >
-                  About
-                  </NavLink>
-                  </li>
-                </ul>
-            </div>
+            <Navbar variant="dark" bg="black" expand="lg" id="navbar" sticky="top">
+            <Container>
+              <Navbar.Brand href="/home">
+              <span className="site-logo" >
+                <img src="../img/logo.png" title="BloodMu" />
+              </span>
+              </Navbar.Brand>
+              <Navbar.Toggle aria-controls="navbar-dark" />
+              <Navbar.Collapse id="navbar-dark">
+                  <Nav className="me-auto" >
+                      <Nav.Link as={Link} to="/news">News</Nav.Link>
+                      <NavDropdown
+                        id="nav-dropdown-dark"
+                        title="Register"
+                        menuVariant="dark"
+                      >
+                        <NavDropdown.Item as={Link} to="/register">Register</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item as={Link} to="/login">Login</NavDropdown.Item>
+                      </NavDropdown>
+                      <Nav.Link as={Link} to="/download">Download</Nav.Link>
+                      <Nav.Link as={Link} to="/ranking">Ranking</Nav.Link>
+                      <Nav.Link as={Link} to="/about">About</Nav.Link>
+                    </Nav>
+              </Navbar.Collapse>
+          </Container>
+          </Navbar>
+
             <div id="header">
               <div className="video-shadow"></div>
               <video id="headervideo" width="100%" height="auto"preload="auto"  muted autoPlay loop >
@@ -94,47 +98,47 @@ export default class App extends Component<any, AppSet> {
               </video>
               <div className="header-content-container">
               <div className="header-content">
-                <div id="stats-block" className="mblock" >
-                    <div>
-                        <img src="../img/img-server-top.png" />
-                        <div className="server-time">
-                              <ul>
-                                <li>
-                                  { this.state.serverState?.state === "Online" ?
-                                  <Link onClick={()=>this.toggleServerModal()} to="#" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-broadcast" viewBox="0 0 16 16"><path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
-                                    <span style={{paddingLeft:"5px"}}>Server is {this.state.serverState?.state} 
-                                  <Badge bg="success" style={{marginLeft:"10px"}} pill>{this.state.serverState?.players}</Badge></span>
-                                  </Link> : <Button variant="danger">Server is Offline</Button>}
+              <div className="row">
+                <div className="col-7">
+                  <div id="stats-block" className="mblock" >
+                      <div>
+                          <img src="../img/img-server-top.png" />
+                          <div className="server-time">
+                                <ul>
+                                  <li>
+                                    { this.state.serverState?.state === "Online" ?
+                                    <Link onClick={()=>this.toggleServerModal()} to="#" >
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-broadcast" viewBox="0 0 16 16"><path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
+                                      <span style={{paddingLeft:"5px"}}>Server is {this.state.serverState?.state} 
+                                    <Badge bg="success" style={{marginLeft:"10px"}} pill>{this.state.serverState?.players}</Badge></span>
+                                    </Link> : <Button variant="danger">Server is Offline</Button>}
 
-                                  <ServerStatusModal show={this.state.showServerModal} serverState={this.state.serverState} toggleModal={()=>this.toggleServerModal()} />
-                                </li>
-                                  <li>Total Accounts: <b>{this.state.serverState?.accounts}</b></li>
-                                  <li>Total Characters: <b>{this.state.serverState?.characters}</b></li>
-                              </ul> 
-                        </div>
-                    </div>	
-                </div>
-                
-                <div id="stats-block-right" className="mblock" >
-                  <div>
-                    <img src="../img/img-server-bottom.png" />
-                    <div className="server-time">
-                    <ul style={{float:"left"}}>
-                      <li><b>MuOnline Season 6.3</b></li>
-                      <li>Reset 400lvl</li>
-                    </ul>
+                                    <ServerStatusModal show={this.state.showServerModal} serverState={this.state.serverState} toggleModal={()=>this.toggleServerModal()} />
+                                  </li>
+                                    <li>Total Accounts: <b>{this.state.serverState?.accounts}</b></li>
+                                    <li>Total Characters: <b>{this.state.serverState?.characters}</b></li>
+                                </ul> 
+                          </div>
+                      </div>	
+                  </div>
+                  <div id="stats-block-right" className="mblock" >
+                    <div>
+                      <img src="../img/img-server-bottom.png" />
+                      <div className="server-time">
+                      <ul style={{float:"left"}}>
+                        <li><b>MuOnline Season 6.3</b></li>
+                        <li>Reset 400lvl</li>
+                      </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
-
-					      <div className="col-xs-8 header-front"></div>
-                <div className="col-xs-4 header-front">
-                      <span style={{fontFamily:"fantasy",textShadow:"1px 1px 5px black",fontSize:"40px",left:"+350px",fontWeight:"bold",color:"red",letterSpacing:"-2px",textAlign:"center", margin:"auto",position:"relative",top:"220px",filter:"blur(0.5px)"}} >
-                          Blood
-                      </span>
-                      <img className="site-logo" src="../img/logo.png" title="" />
+                <div className="col-5">
+                    <span className="site-logo2" >
+                      <img src="../img/logo.png" title="BloodMu" />
+                    </span>
                 </div>
+              </div>
 				      </div>
               </div>
             </div>

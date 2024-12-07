@@ -1,5 +1,5 @@
 
-import  React, { useState } from "react";
+import  React from "react";
 import { Component } from "react";
 import { NewAccountPostData, CommunicationService } from "../lib/CommunicationService";
 
@@ -17,10 +17,6 @@ export interface RegisterState {
     
     RegisterStatus:string,
     FormSuccessState:string
-}
-
-interface RegisterProps {
-    scale: string;
 }
  
 export default class Register extends Component<any, RegisterState> {
@@ -50,7 +46,7 @@ export default class Register extends Component<any, RegisterState> {
         this.changeEmail = this.changeEmail.bind(this);
         this.changePassword = this.changePassword.bind(this);
         this.changePasswordRe = this.changePasswordRe.bind(this);
-        this.saveAccount = this. saveAccount.bind(this);
+        this.saveAccount = this.saveAccount.bind(this);
         this.resetRegistration = this.resetRegistration.bind(this);
     }
 
@@ -82,7 +78,7 @@ export default class Register extends Component<any, RegisterState> {
             }
 
             this.setState({ LoginNameState: loginState},
-                ()=>this.formValidate()
+                () => this.formValidate()
             );
         });
     }
@@ -95,8 +91,8 @@ export default class Register extends Component<any, RegisterState> {
             } else {
                 passwordState = "is-valid";
             }
-            this.setState({PasswordState: passwordState}, ()=>
-                this.formValidate()
+            this.setState({PasswordState: passwordState}, 
+                () => this.formValidate()
             );
             
         });
@@ -110,8 +106,8 @@ export default class Register extends Component<any, RegisterState> {
             } else {
                 passwordState = "is-valid";
             }
-            this.setState({PasswordState: passwordState}, ()=>
-                this.formValidate()
+            this.setState({PasswordState: passwordState}, 
+                () => this.formValidate()
             );
         });
     }
@@ -124,8 +120,8 @@ export default class Register extends Component<any, RegisterState> {
             } else {
                 emailState = "is-valid";
             }
-            this.setState({EmailStste: emailState}, ()=>
-                this.formValidate()
+            this.setState({EmailStste: emailState}, 
+                () => this.formValidate()
             );
         });
     }
@@ -143,13 +139,13 @@ export default class Register extends Component<any, RegisterState> {
 
     formValidate() {
         let isDisabled = false;
-        if(this.state.LoginNameState != "is-valid") {
+        if(this.state.LoginNameState !== "is-valid") {
             isDisabled = true
         }
-        if(this.state.EmailStste != "is-valid") {
+        if(this.state.EmailStste !== "is-valid") {
             isDisabled = true
         }
-        if(this.state.PasswordState != "is-valid") {
+        if(this.state.PasswordState !== "is-valid") {
             isDisabled = true
         }
 
@@ -162,7 +158,7 @@ export default class Register extends Component<any, RegisterState> {
     render() {
         return  (
         <div className="container">
-        {this.state.RegisterStatus == '' ?
+        {this.state.RegisterStatus === '' ?
             <div className="row">
                 <div className="col-8">
                     <h1>Register</h1>
@@ -195,12 +191,12 @@ export default class Register extends Component<any, RegisterState> {
                 </div>
             </div> :
             <div className="row">
-                {this.state.RegisterStatus == "200" &&
+                {this.state.RegisterStatus === "200" &&
                 <div className="col-8">
                     <h1>Register</h1>
                     <p className="small text-success">New account was created for you.</p> 
                 </div>}
-                {this.state.RegisterStatus == "400" &&
+                {this.state.RegisterStatus === "400" &&
                 <div className="col-8">
                     <h1>Register</h1>
                     <p className="small text-danger">Failed to create account.</p>

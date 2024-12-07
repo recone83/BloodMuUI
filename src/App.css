@@ -133,10 +133,14 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
 }
 
 .site-logo {
-	margin-top: 00px;
-	position: relative;
-	top:+140px;
-	left:+210px;
+}
+
+span.site-logo > img {
+		height: 30px;
+}
+span.site-logo2 > img {
+	margin-top:50px;
+	height: 120px;
 }
 #events {
 	color: #f7ddbf;
@@ -181,41 +185,6 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
 		position: relative;
 		top: -10px;
 	}
-
-#navbar {
-	background: #171717;
-	width: 100%;
-	height: 50px;
-}
-
-#navbar ul{
-	text-align: center;
-	margin: 0px;
-	-webkit-padding-start: 0px;
-}
-
-#navbar ul li {
-	font-family: 'Source Sans Pro', sans-serif;
-	list-style-type: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 0px 15px;
-}
-
-#navbar ul li a {
-	display: inline-block;
-	color: #ffffff !important;
-	text-decoration: none;
-	padding: 15px 15px;
-}
-
-#navbar ul li a:active, #navbar ul li a:focus, #navbar ul li a:hover {
-	color: #ffffff !important;
-	text-decoration: none;
-	background: #ff0000;
-}
-
-
 /* CASTLE SIEGE BANNER */
 .castle-siege-banner {
 	width: 970px;
@@ -893,16 +862,14 @@ APP
 #stats-block {
   height:125px;
   width:738px;
-  position:absolute;float:left;
   background:url(../public/img/status-bg.jpg) no-repeat top left;
-  top:25px;
+  margin-top:55px;
 }
 #stats-block-right {
   height:125px;
-  width:738px; float:right;
-  position:absolute;
+  width:738px;
   background:url(../public/img/status-bg.jpg) no-repeat top left;
-  top:180px;
+  margin-top:55px;
 }
 .mblock div {
   float:left;
@@ -927,20 +894,6 @@ APP
   height:390px;
   width:610px;
   overflow: hidden;
-}
-        
-#navbar div.dropdown-menu > a.dropdown-item {
-  color:black!important;
-  width:100%;
-  padding-top:4px;
-  padding-bottom:4px;
-}
-
-#navbar div.dropdown-menu > a.dropdown-item:hover {
-  color:white!important;
-  width:100%;
-  padding-top:4px;
-  padding-bottom:4px;
 }
 
 .loadinggif {
