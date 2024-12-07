@@ -65,7 +65,7 @@ export default class App extends Component<any, AppSet> {
       <div className="container-fluid h-100" style={{padding:"0px", margin:"0px",float:"left",width:"100%"}}>
             <Navbar variant="dark" bg="black" expand="lg" id="navbar" sticky="top">
             <Container>
-              <Navbar.Brand href="/home">
+              <Navbar.Brand as={Link} to="/home">
               <span className="site-logo" >
                 <img src="../img/logo.png" title="BloodMu" />
               </span>

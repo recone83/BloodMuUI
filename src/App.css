@@ -958,6 +958,17 @@ APP
   .nav-flush .nav-link {
 	border-radius: 0;
   }
+  .navbar-nav .nav-link:hover {
+	color:white!important;
+	font-weight: 500;
+	text-decoration:none!important;
+  }
+  .navbar-nav .nav-link:focus {
+	background-color: red;
+	color:white!important;
+	font-weight: 500;
+	text-decoration:none!important;
+  }
   
   .btn-toggle {
 	display: inline-flex;
