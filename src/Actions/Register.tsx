@@ -1,7 +1,7 @@
 
 import  React from "react";
 import { Component } from "react";
-import { NewAccountPostData, CommunicationService } from "../lib/CommunicationService";
+import { NewAccountPostData, CommunicationService } from "../Services/CommunicationService";
 
 export interface RegisterState {
     LoginName: string; 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { CommunicationService } from "../../lib/CommunicationService";
+import { CommunicationService } from "../../Services/CommunicationService";
 import {  CharacterModel } from "../../Model/CharacterModel";
 
 type ModalState = {

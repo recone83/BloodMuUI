@@ -1,7 +1,7 @@
 
 import  React from "react";
 import { Component } from "react";
-import { CommunicationService } from "../lib/CommunicationService";
+import { CommunicationService } from "../Services/CommunicationService";
 import { CharacterList, FullList } from "../Model/CharacterModel";
 import { NavLink } from 'react-router-dom'
 import Tab from 'react-bootstrap/Tab';

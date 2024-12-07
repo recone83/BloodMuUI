@@ -1,15 +1,15 @@
 import  React from "react";
 import { Component } from "react";
 import { LoginModel } from "../Model/LoginModel";
-import { CommunicationService } from "../lib/CommunicationService";
+
 import Alert from 'react-bootstrap/Alert';
 
 type LoginState = {
     login: LoginModel;
     loginStatus: boolean
 }
+
 export default class Login extends Component<any, LoginState> {
-    private comm: CommunicationService = CommunicationService.getInstance();
     private status:boolean = false;
 
     constructor(props:any) {
@@ -19,13 +19,14 @@ export default class Login extends Component<any, LoginState> {
                 Username:"",
                 Password:"",
             },
-            loginStatus:false
+            loginStatus: false
         }
         this.changeUsername = this.changeUsername.bind(this);
         this.changePassword = this.changePassword.bind(this);
         this.loginSubmitt = this.loginSubmitt.bind(this);
 
     }
+    
     changeUsername(e:React.ChangeEvent<HTMLInputElement>){
         let login = this.state.login;
         login.Username = e.target.value;
@@ -36,10 +37,10 @@ export default class Login extends Component<any, LoginState> {
         login.Password = e.target.value;
         this.setState({ login });
     }
-    loginSubmitt() {
+    async loginSubmitt() {
         let loginState = this.state.login;
-        this.comm.logIn(loginState,(resp:any) => {
-            this.setState({ loginStatus: resp  });
+        await this.props.app.LogIn(loginState,(resp:any) => {
+            this.setState({ loginStatus: resp});
         });
     }
     render() {
@@ -47,7 +48,7 @@ export default class Login extends Component<any, LoginState> {
         <div className="container">
             <h1>Login</h1>
             <div className="col-10">
-            {this.state.loginStatus === false ?
+            {this.state.loginStatus == false ?
                 <form>
                     <div  className="mb-3 mt-3">
                         <label className="form-label">Username </label>

@@ -19,13 +19,17 @@ import AdditionalData from './Actions/AdditionalData';
 import Download from './Actions/Download';
 import Character from './Actions/Character';
 
-import { CommunicationService } from "./lib/CommunicationService";
+import { LoginModel } from "./Model/LoginModel";
+
+import { CommunicationService } from "./Services/CommunicationService";
 import { ServerStatus } from "./Model/Type/Default";
 import ServerStatusModal from "./lib/Modal/ServerStatusModal";
+import { SessionService } from "./Services/SessionService";
 
 export interface AppSet {
   serverState: ServerStatus|null;
   showServerModal: boolean;
+  isLoggedIn:boolean
 }
 
 export default class App extends Component<any, AppSet> {
@@ -40,6 +44,7 @@ export default class App extends Component<any, AppSet> {
         accounts:0,
         characters:0
       },
+      isLoggedIn: false,
       showServerModal: false
     }
   }
@@ -57,6 +62,11 @@ export default class App extends Component<any, AppSet> {
     });
   }
 
+  async LogIn(data:LoginModel, run: any) {
+    this.comm.logIn(data, (resp:any) => {
+      this.setState({isLoggedIn: resp}, ()=>run(resp));
+    });
+}
   render() {
     return (
     <Router>
@@ -74,6 +84,7 @@ export default class App extends Component<any, AppSet> {
               <Navbar.Collapse id="navbar-dark">
                   <Nav className="me-auto" >
                       <Nav.Link as={Link} to="/news">News</Nav.Link>
+                      {!this.state.isLoggedIn ?
                       <NavDropdown
                         id="nav-dropdown-dark"
                         title="Register"
@@ -83,10 +94,15 @@ export default class App extends Component<any, AppSet> {
                         <NavDropdown.Divider />
                         <NavDropdown.Item as={Link} to="/login">Login</NavDropdown.Item>
                       </NavDropdown>
+                      : <></>}
                       <Nav.Link as={Link} to="/download">Download</Nav.Link>
                       <Nav.Link as={Link} to="/ranking">Ranking</Nav.Link>
                       <Nav.Link as={Link} to="/about">About</Nav.Link>
                     </Nav>
+                    {this.state.isLoggedIn ?
+                    <Navbar.Text>
+                      Signed in!
+                    </Navbar.Text> : <></>}
               </Navbar.Collapse>
           </Container>
           </Navbar>
@@ -151,8 +167,8 @@ export default class App extends Component<any, AppSet> {
                     <Route path="/character/:id"  render={(props) => (
                         <Character id={props.match.params.id}/>
                     )} />
-                    <Route path="/login" >
-                      <Login />
+                    <Route path="/login">
+                     <Login app={this}  />
                     </Route>
                     <Route path="/about" >
                       <About />
@@ -172,17 +188,18 @@ export default class App extends Component<any, AppSet> {
                   </Switch>
                 </div>
                 <div className="col-4">
+                  {!this.state.isLoggedIn ?
                   <div className="sidebar-banner">
                     <NavLink className="nav-link text-white" aria-current="page" to="/register" >
                       <img src="../img/register_sidebar_banner.jpg"/>
                     </NavLink>
                   </div>
+                  :""}
                   <div className="sidebar-banner">
                     <NavLink className="nav-link text-white" aria-current="page" to="/download" >
                       <img src="../img/download_sidebar_banner.jpg"/>
                     </NavLink>
                   </div>
-
                   <div className="panel panel-sidebar">
                     <div className="panel-heading">
                       <h3 className="panel-title">Contact</h3>
