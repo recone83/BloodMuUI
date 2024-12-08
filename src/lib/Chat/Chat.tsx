@@ -1,27 +1,34 @@
 import  React from "react";
 import { Component } from "react";
+import { CommunicationService } from "../../Services/CommunicationService";
 
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 export interface ChatState {
-    showChat: boolean,
-    toggleChat:any
+    showChat: boolean;
+    toggleChat:any;
+    chatLog:Array<string>;
 }
 
-export default class Chat extends Component<ChatState, ChatState> {
-
+export default class Chat extends Component<any, ChatState> {
+    private comm: CommunicationService = CommunicationService.getInstance();
     constructor(props:ChatState) {
         super(props);
         this.state = props;
     }
 
-    componentWillUpdate(props:ChatState, props2:ChatState) {
+    public getChatLog() {
+        this.comm.getChatLog((data:any) => { 
+          let buffor:string[] = data.data;
+          this.setState({chatLog: buffor});
+        });
     }
-
-    componentDidUpdate(props:ChatState, props2:ChatState) {
+    componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<ChatState>, snapshot?: any): void {
+        if(prevProps.showChat ==false && this.props.showChat == true) {
+            this.getChatLog();
+        }
     }
-
     render() {
         return (
         <Offcanvas show={this.props.showChat} onHide={()=>this.props.toggleChat()} placement={'end'} scroll={true} backdrop={false}>
@@ -30,15 +37,14 @@ export default class Chat extends Component<ChatState, ChatState> {
             </Offcanvas.Header>
             <Offcanvas.Body>
             <div className="form-group" style={{height: "92%"}}>
-              <div className="form-control text-black" id="item1" style={{height: "98%"}} >
-                In progress...
+              <div className="form-control text-black" id="chat-log" style={{height: "98%"}} >
+              {this.state.chatLog !==null ? this.state.chatLog?.map((line, index) => ( <p key={index}>{line}</p>)) : ""}
               </div>
               <form className="d-flex flex-row py-2">
               <Dropdown >
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                     Char
                 </Dropdown.Toggle>
-
                 <Dropdown.Menu>
                     <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                     <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>

@@ -41,7 +41,8 @@ export default class Ranking extends Component<any, RankingState> {
             })
     }
 
-    componentDidMount() {this.getAll();
+    componentDidMount() {
+        this.getAll();
     }
 
     componentWillUpdate() {

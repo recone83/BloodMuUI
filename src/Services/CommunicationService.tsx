@@ -71,7 +71,6 @@ export class CommunicationService {
             run(error.response.status, null);
         });
     }
-
     async getCharacterList(run: CharacterListDataEvent) {
         return await this.api.get('/v1/character/ranking/resets').then(res => {
             let lista = res.data as CharacterList;
@@ -108,6 +107,14 @@ export class CommunicationService {
         }, (error) => {
             run(false);
            console.log(error);
+        });
+    }
+
+    async getChatLog(run: any) {
+        return await this.api.get('v1/auth/chat/log').then(res => {
+            run(res);
+        }, (error) => {
+            run({status:error.status, data: error});
         });
     }
 }

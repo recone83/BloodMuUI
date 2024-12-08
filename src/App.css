@@ -1083,3 +1083,8 @@ APP
   .nav-sub-item li a:hover {
 	text-decoration: none;
   }
+
+  #chat-log p {
+	font-size: 12px;
+	margin-bottom:2px;
+  }
