@@ -61,7 +61,7 @@ export default class Ranking extends Component<any, RankingState> {
 
     render() {
         return (
-        <div className="container">
+        <div>
         <h1>Ranking</h1>
         <Tabs defaultActiveKey="all" id="uncontrolled-tab-example" className="mb-3" onSelect={(eventKey)=>this.handleSelect(eventKey)}>
             <Tab id="tab1" eventKey="all" title="All players">

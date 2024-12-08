@@ -71,19 +71,17 @@ export default class App extends Component<any, AppSet> {
     return (
     <Router>
       <AdditionalData />
-
-      <div className="container-fluid h-100" style={{padding:"0px", margin:"0px",float:"left",width:"100%"}}>
+      <div className="container-fluid h-100">
             <Navbar variant="dark" bg="black" expand="lg" id="navbar" sticky="top">
             <Container>
               <Navbar.Brand as={Link} to="/home">
-              <span className="site-logo" >
-                <img src="../img/logo.png" title="BloodMu" />
+              <span className="site-logo" >Blood
+                <img src="../img/logo.png" title="BloodMu" style={{marginLeft: "10px"}}/>
               </span>
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="navbar-dark" />
               <Navbar.Collapse id="navbar-dark">
-                  <Nav className="me-auto" >
-                      <Nav.Link as={Link} to="/news">News</Nav.Link>
+                  <Nav>
                       {!this.state.isLoggedIn ?
                       <NavDropdown
                         id="nav-dropdown-dark"
@@ -113,9 +111,9 @@ export default class App extends Component<any, AppSet> {
                 <source src="../img/world_2.mp4" type="video/mp4" />
               </video>
               <div className="header-content-container">
-              <div className="header-content">
+              <div className="container">
               <div className="row">
-                <div className="col-7">
+                <div className="col-12">
                   <div id="stats-block" className="mblock" >
                       <div>
                           <img src="../img/img-server-top.png" />
@@ -138,21 +136,16 @@ export default class App extends Component<any, AppSet> {
                       </div>	
                   </div>
                   <div id="stats-block-right" className="mblock" >
-                    <div>
-                      <img src="../img/img-server-bottom.png" />
-                      <div className="server-time">
-                      <ul style={{float:"left"}}>
-                        <li><b>MuOnline Season 6.3</b></li>
-                        <li>Reset 400lvl</li>
-                      </ul>
+                      <div>
+                        <img src="../img/img-server-bottom.png" />
+                        <div className="server-time">
+                        <ul style={{float:"left"}}>
+                          <li><b>MuOnline Season 6.3</b></li>
+                          <li>Reset 400lvl</li>
+                        </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div className="col-5">
-                    <span className="site-logo2" >
-                      <img src="../img/logo.png" title="BloodMu" />
-                    </span>
                 </div>
               </div>
 				      </div>
@@ -214,8 +207,8 @@ export default class App extends Component<any, AppSet> {
             </div>
 
             <footer className="footer">
-              <div className="footer-container">
-                <div className="col-xs-8">
+              <div className="container">
+                <div className="col-12">
                   <p>&copy; 2024</p>
                   <p>This site is in no way associated with or endorsed by Webzen Inc.</p>
                   <br />

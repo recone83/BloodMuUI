@@ -16,7 +16,7 @@ export default class Download extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div>
             <h1>Download</h1>
                 <div className="card">
                 <div className="card-body">

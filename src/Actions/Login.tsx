@@ -45,7 +45,7 @@ export default class Login extends Component<any, LoginState> {
     }
     render() {
         return (
-        <div className="container">
+        <div>
             <h1>Login</h1>
             <div className="col-10">
             {this.state.loginStatus == false ?

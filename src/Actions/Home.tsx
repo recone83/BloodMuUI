@@ -26,7 +26,7 @@ export default class Home extends Component<any, AppSet> {
     
     render() {
         return (
-        <div className="container" >
+        <div>
             <div className="row" style={{marginTop:"20px"}}>         
                 <div className="col-12">
                     <h3>

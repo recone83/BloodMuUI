@@ -70,7 +70,7 @@ export default class Character extends Component<ModalProps, ModalState> {
 
     render() {
         return (
-        <div className="container">
+        <div>
         { this.state.character ? <div>
             <h1>{this.state.character?.name}</h1>
             <div style={{float:"left", width:"100px", height:"100px",margin:"5px 5px 5px 5px"}} >

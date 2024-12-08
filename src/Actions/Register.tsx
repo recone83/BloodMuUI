@@ -157,7 +157,7 @@ export default class Register extends Component<any, RegisterState> {
 
     render() {
         return  (
-        <div className="container">
+        <div>
         {this.state.RegisterStatus === '' ?
             <div className="row">
                 <div className="col-8">

@@ -4,7 +4,7 @@ import { Component } from "react";
 export default class About extends Component {
     render() {
         return (
-        <div className="container">
+        <div>
         <h1>About</h1>
         <p> <br />
 <small>BloodMu is free Mu server, beta testing / in development<br/>
