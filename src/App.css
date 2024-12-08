@@ -630,7 +630,7 @@ width: 400px;
 	font-family: 'Source Sans Pro', sans-serif;
 	border: 0px;
 	-moz-border-radius: 0px;
-	border-radius: 0px;
+	border-radius: 10px 10px 0px 0px;
 	border-bottom: 3px solid #ff0000;
 }
 
@@ -699,7 +699,10 @@ width: 400px;
 	margin-bottom: 20px !important;
 	font-weight: bold;
 }
-
+.panel-body {
+	padding:10px;
+	margin-bottom: 10px;
+}
 /* ADD STATS MODULE */
 .panel-addstats {
 	margin-bottom: 30px;
