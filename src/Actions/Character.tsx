@@ -24,6 +24,7 @@ export default class Character extends Component<ModalProps, ModalState> {
 
     componentDidMount() {
         this.comm.getCharacter(this.props.id, (st) => {
+            document.title = "Player: " + st.data.name;
             this.setState({
                 character: st.data,
             })

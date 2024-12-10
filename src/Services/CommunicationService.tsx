@@ -103,10 +103,9 @@ export class CommunicationService {
                  headers: {'Content-Type': 'application/json'}
             })
         .then(res => {
-            run(true);
+            run(res.status);
         }, (error) => {
-            run(false);
-           console.log(error);
+            run(error.response.status);
         });
     }
 

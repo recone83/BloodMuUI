@@ -6,7 +6,7 @@ import Alert from 'react-bootstrap/Alert';
 
 type LoginState = {
     login: LoginModel;
-    loginStatus: boolean
+    loginStatus: number
 }
 
 export default class Login extends Component<any, LoginState> {
@@ -19,14 +19,16 @@ export default class Login extends Component<any, LoginState> {
                 Username:"",
                 Password:"",
             },
-            loginStatus: false
+            loginStatus: 0
         }
         this.changeUsername = this.changeUsername.bind(this);
         this.changePassword = this.changePassword.bind(this);
         this.loginSubmitt = this.loginSubmitt.bind(this);
 
     }
-    
+    componentDidMount(){
+        document.title = "Login in"
+    }
     changeUsername(e:React.ChangeEvent<HTMLInputElement>){
         let login = this.state.login;
         login.Username = e.target.value;
@@ -39,7 +41,7 @@ export default class Login extends Component<any, LoginState> {
     }
     async loginSubmitt() {
         let loginState = this.state.login;
-        await this.props.app.LogIn(loginState,(resp:any) => {
+        await this.props.app.LogIn(loginState, (resp:any) => {
             this.setState({ loginStatus: resp});
         });
     }
@@ -48,7 +50,11 @@ export default class Login extends Component<any, LoginState> {
         <div>
             <h1>Login</h1>
             <div className="col-10">
-            {this.state.loginStatus == false ?
+            {this.state.loginStatus === 401 ?
+            <Alert key="warning" variant="warning">
+                Failed to login !
+            </Alert> : "" }
+            {this.state.loginStatus !== 200 ?
                 <form>
                     <div  className="mb-3 mt-3">
                         <label className="form-label">Username </label>

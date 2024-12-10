@@ -22,30 +22,27 @@ export default class Ranking extends Component<any, RankingState> {
             allList: {}
         }
     }
-
     public getResets() {
-        if (Object.keys(this.state.resetList).length == 0)
+        if (Object.keys(this.state.resetList).length === 0)
         this.comm.getCharacterList(data => {
-            if(data.status == 200) {
+            if(data.status === 200) {
                 this.setState({resetList: data.data});
             }
         })
     }
     
     public getAll() {
-        if(Object.keys(this.state.allList).length == 0)
+        if(Object.keys(this.state.allList).length === 0)
             this.comm.getFullList(data => {
-                if(data.status == 200) {
+                if(data.status === 200) {
                     this.setState({allList: data.data});
                 }
             })
     }
 
     componentDidMount() {
+        document.title = "BloodMu game ranking"
         this.getAll();
-    }
-
-    componentWillUpdate() {
     }
 
     handleSelect(eventKey:any) {

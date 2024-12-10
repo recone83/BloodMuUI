@@ -1,6 +1,4 @@
-
-import  React from "react";
-import { Component } from "react";
+import  React, { Component } from "react";
 import { NewAccountPostData, CommunicationService } from "../Services/CommunicationService";
 
 export interface RegisterState {
@@ -49,7 +47,9 @@ export default class Register extends Component<any, RegisterState> {
         this.saveAccount = this.saveAccount.bind(this);
         this.resetRegistration = this.resetRegistration.bind(this);
     }
-
+    componentDidMount(){
+        document.title = "Register to BloodMu"
+    }
     resetRegistration() {
         this.setState({
             EMail:"",

@@ -20,10 +20,9 @@ export default class Home extends Component<any, AppSet> {
     toggleChat() {
         this.setState({chatShow: !this.state.chatShow});
     }
-
-    componentDidMount() {
+    componentDidMount(){
+        document.title = "BloodMu is MuOnLine private server"
     }
-    
     render() {
         return (
         <div>

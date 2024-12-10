@@ -10,10 +10,9 @@ export default class Download extends Component {
             history: []
         }
     }
-
-    componentDidMount() {
+    componentDidMount(){
+        document.title = "Download BloodMu client"
     }
-
     render() {
         return (
             <div>

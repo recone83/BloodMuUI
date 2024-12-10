@@ -24,7 +24,6 @@ import { LoginModel } from "./Model/LoginModel";
 import { CommunicationService } from "./Services/CommunicationService";
 import { ServerStatus } from "./Model/Type/Default";
 import ServerStatusModal from "./lib/Modal/ServerStatusModal";
-import { SessionService } from "./Services/SessionService";
 
 export interface AppSet {
   serverState: ServerStatus|null;
@@ -64,7 +63,9 @@ export default class App extends Component<any, AppSet> {
 
   async LogIn(data:LoginModel, run: any) {
     this.comm.logIn(data, (resp:any) => {
-      this.setState({isLoggedIn: resp}, ()=>run(resp));
+      this.setState({isLoggedIn: resp === 200 ? true : false }, 
+        () => run(resp)
+      );
     });
 }
   render() {
@@ -126,8 +127,11 @@ export default class App extends Component<any, AppSet> {
                                       <span style={{paddingLeft:"5px"}}>Server is {this.state.serverState?.state} 
                                     <Badge bg="success" style={{marginLeft:"10px"}} pill>{this.state.serverState?.players}</Badge></span>
                                     </Link> : <Button variant="danger">Server is Offline</Button>}
-
-                                    <ServerStatusModal show={this.state.showServerModal} serverState={this.state.serverState} toggleModal={()=>this.toggleServerModal()} />
+                                    <ServerStatusModal 
+                                      show={this.state.showServerModal} 
+                                      serverState={this.state.serverState} 
+                                      toggleModal={() => this.toggleServerModal()}
+                                    />
                                   </li>
                                     <li>Total Accounts: <b>{this.state.serverState?.accounts}</b></li>
                                     <li>Total Characters: <b>{this.state.serverState?.characters}</b></li>
