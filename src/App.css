@@ -850,9 +850,6 @@ a:focus, a:hover {
 background: #fafafa;
 border: 1px solid #e3e3e3;
 color: #666;
-overflow-y: auto;
-flex-direction: column-reverse;
-display: flex;
 }
 .form-control:focus {
 border: 1px solid #ccc;
@@ -1086,8 +1083,18 @@ APP
   .nav-sub-item li a:hover {
 	text-decoration: none;
   }
-
+  #chat-log {
+    overflow-y: auto;
+  }
   #chat-log p {
 	font-size: 12px;
 	margin-bottom:2px;
+  }
+  #chat-log p small {
+	display: block;
+	color: #333;
+	font-size: x-small;
+  }
+  #chat-log p:nth-child(odd) {
+    background-color: #f2f2f2; 
   }

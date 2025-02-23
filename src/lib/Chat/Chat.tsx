@@ -1,4 +1,4 @@
-import  React from "react";
+import React, {useRef } from 'react'
 import { Component } from "react";
 import { CommunicationService } from "../../Services/CommunicationService";
 
@@ -18,16 +18,35 @@ export default class Chat extends Component<any, ChatState> {
         this.state = props;
     }
 
+    async scrollToBottom() {
+        document.getElementById('bottomElm')?.scrollIntoView();
+    }
+
     public getChatLog() {
         this.comm.getChatLog((data:any) => { 
           let buffor:string[] = data.data;
-          this.setState({chatLog: buffor});
+          buffor=buffor.filter((row) => row.trim() !== "");
+          this.setState({chatLog: buffor}, ()=>this.scrollToBottom());
         });
     }
     componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<ChatState>, snapshot?: any): void {
-        if(prevProps.showChat ==false && this.props.showChat == true) {
+        if(!prevProps.showChat && this.props.showChat) {
             this.getChatLog();
         }
+    }
+     formatMessage(input: string): string {
+        const regex = /^\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\](.*)$/;
+        const match = input.match(regex);
+    
+        if (match) {
+            const date = match[1].split(' ')[0]; // Extract the date part
+            const message = match[2].trim(); // Get the message after the date
+    
+            // Format as required
+            return `<small>[${date}]</small> ${message}`;
+        }
+    
+        return input; // If the format doesn't match, return the original input
     }
     render() {
         return (
@@ -38,7 +57,8 @@ export default class Chat extends Component<any, ChatState> {
             <Offcanvas.Body>
             <div className="form-group" style={{height: "92%"}}>
               <div className="form-control text-black" id="chat-log" style={{height: "98%"}} >
-              {this.state.chatLog !==null ? this.state.chatLog?.map((line, index) => ( <p key={index}>{line}</p>)) : ""}
+              {this.state.chatLog !==null ? this.state.chatLog?.map((line, index) => (<p key={index}  dangerouslySetInnerHTML={{ __html: this.formatMessage(line) }} />)) : ""}
+              <div id="bottomElm" />
               </div>
               <form className="d-flex flex-row py-2">
               <Dropdown >
