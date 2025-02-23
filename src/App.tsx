@@ -146,6 +146,7 @@ export default class App extends Component<any, AppSet> {
                         <ul style={{float:"left"}}>
                           <li><b>MuOnline Season 6.3</b></li>
                           <li>Reset 400lvl</li>
+                          <li>Experience x300</li>
                         </ul>
                         </div>
                       </div>

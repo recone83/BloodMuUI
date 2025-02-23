@@ -48,7 +48,7 @@ export default class Home extends Component<any, AppSet> {
                 <Card  style={{ width: '100%', marginTop:'20px' }}>
                     <Card.Body>
                         <Card.Text>
-                        BloodMu start 01/03/2023
+                        BloodMu start 01/03
                         </Card.Text>
                     </Card.Body>
                 </Card>            
