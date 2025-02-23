@@ -850,6 +850,9 @@ a:focus, a:hover {
 background: #fafafa;
 border: 1px solid #e3e3e3;
 color: #666;
+overflow-y: auto;
+flex-direction: column-reverse;
+display: flex;
 }
 .form-control:focus {
 border: 1px solid #ccc;
